@@ -23,14 +23,13 @@ class ApiManager {
     return source;
   }
 
-   static Future<ArticleResponse> getNews(String sourceId, query) async {
+   static Future<ArticleResponse> getNews(String sourceId) async {
     Uri url = Uri.https(
       BASEURL,
       NEWS_ENDPOINT,
       {
         'apiKey': APIKEY,
         'sources': sourceId,
-        "q": query
       },
     );
     http.Response response = await http.get(url);
