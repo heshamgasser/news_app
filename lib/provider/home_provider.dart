@@ -1,5 +1,5 @@
 import 'package:app_template/screens/setting_screen.dart';
-import 'package:app_template/screens/widget/drawer_widget.dart';
+import 'package:app_template/screens/widget/drawer_widget/drawer_widget.dart';
 import 'package:flutter/material.dart';
 import '../models/category_item_model.dart';
 

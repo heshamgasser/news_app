@@ -1,7 +1,8 @@
 import 'package:app_template/provider/home_provider.dart';
 import 'package:app_template/screens/category_screen.dart';
 import 'package:app_template/screens/news_screen.dart';
-import 'package:app_template/screens/widget/drawer_widget.dart';
+import 'package:app_template/screens/widget/drawer_widget/drawer_widget.dart';
+import 'package:app_template/screens/widget/search_widget/search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -33,6 +34,11 @@ class HomeScreen extends StatelessWidget {
                   : provider.categoryModel!.name,
               style: Theme.of(context).textTheme.titleLarge,
             ),
+            actions: [
+              IconButton(onPressed: () {
+
+              }, icon: Icon(Icons.search, size: 30,),),
+            ],
           ),
           body: provider.categoryModel == null
               ? CategoryScreen(provider.onCategorySelected)
