@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
           ),
           body: provider.categoryModel == null
               ? CategoryScreen(provider.onCategorySelected)
-              : NewsScreen(provider.categoryModel!),
+              : NewsScreen(provider.categoryModel!) ,
         );
       },
     );

@@ -1,10 +1,10 @@
+import 'package:app_template/screens/setting_screen.dart';
 import 'package:flutter/material.dart';
 
 class DrawerWidget extends StatelessWidget {
   static int CATEGORY = 1;
   static int SETTING = 2;
   Function onDrawerClicked;
-
 
   DrawerWidget(this.onDrawerClicked);
 
@@ -41,11 +41,11 @@ class DrawerWidget extends StatelessWidget {
                     ],
                   ),
                 ),
-                SizedBox(height: 10),
+                SizedBox(height: 30),
                 InkWell(
                   onTap: () {
-                    onDrawerClicked(SETTING);
                     Navigator.pop(context);
+                    Navigator.pushNamed(context, SettingScreen.routeName);
                   },
                   child: Row(
                     children: [
