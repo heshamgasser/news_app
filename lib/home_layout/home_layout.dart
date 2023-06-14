@@ -1,6 +1,8 @@
 import 'package:app_template/provider/home_provider.dart';
 import 'package:app_template/screens/category_screen.dart';
 import 'package:app_template/screens/news_screen.dart';
+import 'package:app_template/screens/setting_screen.dart';
+import 'package:app_template/screens/widget/drawer_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +16,7 @@ class HomeScreen extends StatelessWidget {
       builder: (context, child) {
         var provider = Provider.of<HomeProvider>(context);
         return Scaffold(
+          drawer: DrawerWidget(provider.onDrawerClicked,),
           appBar: AppBar(
             toolbarHeight: MediaQuery.of(context).size.height * .1,
             shape: OutlineInputBorder(
@@ -25,7 +28,9 @@ class HomeScreen extends StatelessWidget {
             ),
             centerTitle: true,
             title: Text(
-              'News App',
+              provider.categoryModel == null
+                  ? 'News App'
+                  : provider.categoryModel!.name,
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ),
@@ -34,15 +39,6 @@ class HomeScreen extends StatelessWidget {
               : NewsScreen(provider.categoryModel!),
         );
       },
-
     );
   }
-
-  // CategoryModel? categoryModel = null;
-  //
-  // void onCategorySelected(category) {
-  //   setState(() {
-  //     categoryModel = category;
-  //   });
-  // }
 }
