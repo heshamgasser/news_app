@@ -1,5 +1,6 @@
 import 'package:app_template/screens/widget/source_item_widget/source_item_widget.dart';
 import 'package:app_template/shared/network/remote/api_manager.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../models/SourcesResponse.dart';
@@ -88,14 +89,44 @@ class _TabsScreenState extends State<TabsScreen> {
             return Expanded(
               child: ListView.separated(
                   itemBuilder: (context, index) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Image.network(newsData[index].urlToImage ?? ''),
-                        Text(newsData[index].source?.name ?? ''),
-                        Text(newsData[index].title ?? ''),
-                        Text(newsData[index].publishedAt?.substring(0,10) ?? '', textAlign: TextAlign.end,)
-                      ],
+                    return Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          ClipRRect(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(20),
+                            ),
+                            child: CachedNetworkImage(
+                              imageUrl: newsData[index].urlToImage ?? '',
+                              placeholder: (context, url) =>
+                                  CircularProgressIndicator(),
+                              errorWidget: (context, url, error) =>
+                                  Icon(Icons.error),
+                            ),
+                          ),
+
+                          // Image.network(
+                          //     newsData[index].urlToImage ?? '')),
+                          Text(
+                            newsData[index].source?.name ?? '',
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall!
+                                .copyWith(color: Colors.grey),
+                          ),
+                          Text(newsData[index].title ?? ''),
+                          Text(
+                              newsData[index].publishedAt?.substring(0, 10) ??
+                                  '',
+                              textAlign: TextAlign.end,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodySmall!
+                                  .copyWith(color: Colors.grey))
+                        ],
+                      ),
                     );
                   },
                   separatorBuilder: (context, index) => SizedBox(height: 5),
