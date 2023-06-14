@@ -3,16 +3,15 @@ import 'dart:convert';
 import 'package:app_template/models/ArticleResponse.dart';
 import 'package:app_template/models/SourcesResponse.dart';
 import 'package:http/http.dart' as http;
-import 'package:http/http.dart';
-
 import '../../components/constant.dart';
 
 class ApiManager {
-  static Future<SourcesResponse> getSources() async {
+  static Future<SourcesResponse> getSources(String category) async {
     Uri url = Uri.https(
       BASEURL,
       SOURCES_ENDPOINT,
-      {'apiKey': APIKEY},
+      {'apiKey': APIKEY,
+      'category': category},
     );
 
     http.Response response = await http.get(url);

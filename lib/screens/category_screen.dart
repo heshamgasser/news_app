@@ -2,11 +2,12 @@ import 'package:app_template/models/category_item_model.dart';
 import 'package:app_template/screens/widget/category_screen_widget/categoryItemWidget.dart';
 import 'package:flutter/material.dart';
 
-import '../models/SourcesResponse.dart';
-
 class CategoryScreen extends StatelessWidget {
   static const String routeName = 'Category Screen';
 List <CategoryModel> category = CategoryModel.getCategory();
+Function onCategorySelected;
+
+CategoryScreen(this.onCategorySelected);
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +29,12 @@ List <CategoryModel> category = CategoryModel.getCategory();
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                     crossAxisCount: 2),
-
                 itemBuilder: (context, index) {
-                return CatergoryItemWidget(category[index]);
+                return InkWell(
+                    onTap: () {
+                      onCategorySelected(category[index]);
+                    },
+                    child: CatergoryItemWidget(category[index], index));
               },),
             ),
           ],

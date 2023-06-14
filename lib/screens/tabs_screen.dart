@@ -105,9 +105,6 @@ class _TabsScreenState extends State<TabsScreen> {
                                   Icon(Icons.error),
                             ),
                           ),
-
-                          // Image.network(
-                          //     newsData[index].urlToImage ?? '')),
                           Text(
                             newsData[index].source?.name ?? '',
                             style: Theme.of(context)
