@@ -70,30 +70,14 @@ class HomeScreen extends StatelessWidget {
           }
 
           var sources = snapshot.data?.sources;
-          return TabsScreen(sources!);
+          return CategoryScreen();
+
+
+            // TabsScreen(sources!);
         },
       ),
 
 
-
-
-      // Column(
-      //   mainAxisAlignment: MainAxisAlignment.start,
-      //   crossAxisAlignment: CrossAxisAlignment.stretch,
-      //   children: [
-      //     Text('Pick Your Category', style: Theme.of(context).textTheme.bodyLarge,),
-      //     SizedBox(height: 5),
-      //     Text('of Interest', style: Theme.of(context).textTheme.bodyLarge,),
-      //     SizedBox(height: 10,),
-      //     GridView.builder(
-      //         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-      //             crossAxisSpacing: 10,
-      //             mainAxisSpacing: 10,
-      //             crossAxisCount: 2), itemBuilder: (context, index) {
-      //               return CatergoryItemWidget();
-      //             },),
-      //   ],
-      // ),
 
 
 

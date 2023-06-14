@@ -2,7 +2,6 @@ import 'package:app_template/screens/widget/source_item_widget/source_item_widge
 import 'package:app_template/shared/network/remote/api_manager.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
 import '../models/SourcesResponse.dart';
 
 class TabsScreen extends StatefulWidget {
@@ -101,7 +100,7 @@ class _TabsScreenState extends State<TabsScreen> {
                             child: CachedNetworkImage(
                               imageUrl: newsData[index].urlToImage ?? '',
                               placeholder: (context, url) =>
-                                  CircularProgressIndicator(),
+                                  Center( child: CircularProgressIndicator()),
                               errorWidget: (context, url, error) =>
                                   Icon(Icons.error),
                             ),
