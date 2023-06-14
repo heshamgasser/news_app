@@ -1,6 +1,7 @@
 import 'package:app_template/models/category_item_model.dart';
 import 'package:app_template/screens/widget/category_screen_widget/categoryItemWidget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class CategoryScreen extends StatelessWidget {
   static const String routeName = 'Category Screen';
@@ -18,9 +19,9 @@ CategoryScreen(this.onCategorySelected);
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Text('Pick Your Category', style: Theme.of(context).textTheme.bodyLarge,),
-            SizedBox(height: 5),
-            Text('of Interest', style: Theme.of(context).textTheme.bodyLarge,),
+            Text(AppLocalizations.of(context)!.selectCategory, style: Theme.of(context).textTheme.bodyLarge,),
+            // SizedBox(height: 5),
+            // Text('of Interest', style: Theme.of(context).textTheme.bodyLarge,),
             SizedBox(height: 10,),
             Expanded(
               child: GridView.builder(
@@ -34,7 +35,7 @@ CategoryScreen(this.onCategorySelected);
                     onTap: () {
                       onCategorySelected(category[index]);
                     },
-                    child: CatergoryItemWidget(category[index], index));
+                    child: CatergoryItemWidget(category[index], index),);
               },),
             ),
           ],

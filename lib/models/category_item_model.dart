@@ -1,6 +1,7 @@
 import 'package:app_template/shared/style/app_colors.dart';
 import 'package:flutter/material.dart';
 
+
 class CategoryModel {
  String id;
  String name;

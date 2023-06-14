@@ -1,5 +1,6 @@
 import 'package:app_template/screens/setting_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DrawerWidget extends StatelessWidget {
   static int CATEGORY = 1;
@@ -35,7 +36,7 @@ class DrawerWidget extends StatelessWidget {
                       ),
                       SizedBox(width: 10),
                       Text(
-                        'Categories',
+                        AppLocalizations.of(context)!.categories,
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],
@@ -55,7 +56,7 @@ class DrawerWidget extends StatelessWidget {
                       ),
                       SizedBox(width: 10),
                       Text(
-                        'Setting',
+                        AppLocalizations.of(context)!.settings,
                         style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ],
