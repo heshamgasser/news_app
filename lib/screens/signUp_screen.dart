@@ -157,9 +157,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         AppLocalizations.of(context)!.login,
                         style: Theme.of(context).textTheme.bodySmall!.copyWith(
                             color: Colors.blueAccent,
-                            decoration: TextDecoration.underline,
-                            decorationColor: Colors.blueAccent,
-                            decorationThickness: 4),
+                            ),
                       ),
                     ),
                   ],
