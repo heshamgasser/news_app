@@ -1,21 +1,24 @@
-import 'package:app_template/screens/signUp_screen.dart';
+import 'package:app_template/screens/login_screen.dart';
 import 'package:app_template/screens/widget/login_signup_screen_widget/email_screen_widget.dart';
 import 'package:app_template/screens/widget/login_signup_screen_widget/password_screen_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class LoginScreen extends StatefulWidget {
-  static const String routeName = 'Login Screen';
+class SignUpScreen extends StatefulWidget {
+  static const String routeName = 'Sign Up Screen';
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController emailController = TextEditingController();
   bool secured = true;
+  bool securedConfirm = true;
   TextEditingController passwordController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
+  TextEditingController confirmedPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +35,7 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
         centerTitle: true,
         title: Text(
-          AppLocalizations.of(context)!.login,
+          AppLocalizations.of(context)!.signup,
           style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
@@ -45,6 +48,16 @@ class _LoginScreenState extends State<LoginScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
+                  Text(AppLocalizations.of(context)!.name, style: Theme.of(context).textTheme.bodyMedium,),
+                  SizedBox(height: 10),
+                  DefaultEmailTextFormField(
+                      labelText: AppLocalizations.of(context)!.name,
+                      controller: nameController,
+                      prefixIcon: CupertinoIcons.person,
+                      suffixIcon: Icons.edit_note_outlined),
+                  SizedBox(
+                    height: 10,
+                  ),
                   Text(
                     AppLocalizations.of(context)!.email,
                     style: Theme.of(context).textTheme.bodyMedium,
@@ -56,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       prefixIcon: Icons.alternate_email,
                       suffixIcon: Icons.email),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   Text(
                     AppLocalizations.of(context)!.password,
@@ -76,6 +89,27 @@ class _LoginScreenState extends State<LoginScreen> {
                       });
                     },
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    AppLocalizations.of(context)!.confirmPassword,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                  SizedBox(height: 10),
+                  DefaultPasswordTextFormField(
+                    labelText: AppLocalizations.of(context)!.confirmPassword,
+                    secured: securedConfirm,
+                    prefixIcon: Icons.password,
+                    suffixIcon:
+                    secured ? CupertinoIcons.eye : CupertinoIcons.eye_slash,
+                    controller: confirmedPasswordController,
+                    onSecuredClicked: () {
+                      setState(() {
+                        securedConfirm = !securedConfirm;
+                      });
+                    },
+                  ),
                   SizedBox(height: 20),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
@@ -84,7 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     onPressed: () {},
                     child: Text(
-                      AppLocalizations.of(context)!.login,
+                      AppLocalizations.of(context)!.signup,
                       style: Theme.of(context)
                           .textTheme
                           .bodyMedium!
@@ -98,15 +132,15 @@ class _LoginScreenState extends State<LoginScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  AppLocalizations.of(context)!.createAccount,
+                  AppLocalizations.of(context)!.haveAccount,
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, SignUpScreen.routeName);
+                    Navigator.pushReplacementNamed(context, LoginScreen.routeName);
                   },
                   child: Text(
-                    AppLocalizations.of(context)!.signup,
+                    AppLocalizations.of(context)!.login,
                     style: Theme.of(context).textTheme.bodySmall!.copyWith(
                         color: Colors.blueAccent,
                         decoration: TextDecoration.underline,

@@ -2,6 +2,7 @@ import 'package:app_template/home_layout/home_layout.dart';
 import 'package:app_template/provider/app_provider.dart';
 import 'package:app_template/screens/login_screen.dart';
 import 'package:app_template/screens/setting_screen.dart';
+import 'package:app_template/screens/signUp_screen.dart';
 import 'package:app_template/shared/style/myThemeData.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -42,6 +43,7 @@ class NewsApp extends StatelessWidget {
         HomeScreen.routeName: (context) => HomeScreen(),
         SettingScreen.routeName:(context) => SettingScreen(),
         LoginScreen.routeName:(context) => LoginScreen(),
+        SignUpScreen.routeName:(context) => SignUpScreen(),
 
 
       },
