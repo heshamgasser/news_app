@@ -14,7 +14,7 @@ class DefaultEmailTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  TextFormField(
-
+      textInputAction: TextInputAction.next,
       controller: controller,
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(horizontal: 10, vertical: 15),

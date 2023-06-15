@@ -19,6 +19,7 @@ class DefaultPasswordTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      textInputAction: TextInputAction.next,
         obscureText: secured,
         controller: controller,
         decoration: InputDecoration(

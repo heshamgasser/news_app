@@ -19,6 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         toolbarHeight: MediaQuery.of(context).size.height * .1,
         shape: OutlineInputBorder(
