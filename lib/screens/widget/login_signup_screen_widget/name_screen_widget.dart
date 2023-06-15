@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class DefaultEmailTextFormField extends StatelessWidget {
+class DefaultNameTextFormField extends StatelessWidget {
   String labelText;
   IconData prefixIcon;
   IconData suffixIcon;
 
   TextEditingController controller;
 
-  DefaultEmailTextFormField(
+  DefaultNameTextFormField(
       {required this.labelText,
       required this.prefixIcon,
       required this.suffixIcon,
@@ -18,14 +18,9 @@ class DefaultEmailTextFormField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFormField(
       validator: (value) {
-        final bool emailValid = RegExp(
-                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-            .hasMatch(value!);
 
-        if (value.isEmpty) {
+        if (value== null || value.isEmpty) {
           return AppLocalizations.of(context)!.fieldRequired;
-        } else if (!emailValid) {
-          return AppLocalizations.of(context)!.wrongEmail;
         }
         return null;
       },

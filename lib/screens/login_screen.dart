@@ -1,3 +1,4 @@
+import 'package:app_template/home_layout/home_layout.dart';
 import 'package:app_template/screens/signUp_screen.dart';
 import 'package:app_template/screens/widget/login_signup_screen_widget/email_screen_widget.dart';
 import 'package:app_template/screens/widget/login_signup_screen_widget/password_screen_widget.dart';
@@ -16,6 +17,7 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController emailController = TextEditingController();
   bool secured = true;
   TextEditingController passwordController = TextEditingController();
+  GlobalKey <FormState>formKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -36,87 +38,94 @@ class _LoginScreenState extends State<LoginScreen> {
           style: Theme.of(context).textTheme.titleLarge,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            Expanded(
-              child: Column(
+      body: Form(
+        key: formKey,
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      AppLocalizations.of(context)!.email,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    SizedBox(height: 10),
+                    DefaultEmailTextFormField(
+                        labelText: AppLocalizations.of(context)!.email,
+                        controller: emailController,
+                        prefixIcon: Icons.alternate_email,
+                        suffixIcon: Icons.email),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Text(
+                      AppLocalizations.of(context)!.password,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    SizedBox(height: 10),
+                    DefaultPasswordTextFormField(
+                      labelText: AppLocalizations.of(context)!.password,
+                      secured: secured,
+                      prefixIcon: Icons.password,
+                      suffixIcon:
+                          secured ? CupertinoIcons.eye : CupertinoIcons.eye_slash,
+                      controller: passwordController,
+                      onSecuredClicked: () {
+                        setState(() {
+                          secured = !secured;
+                        });
+                      },
+                    ),
+                    SizedBox(height: 20),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Theme.of(context).primaryColor,
+                        padding: EdgeInsets.symmetric(vertical: 15),
+                      ),
+                      onPressed: () {
+                        if (formKey.currentState!.validate()){
+                          Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+                        }
+                      },
+                      child: Text(
+                        AppLocalizations.of(context)!.login,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium!
+                            .copyWith(color: Colors.white),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    AppLocalizations.of(context)!.email,
-                    style: Theme.of(context).textTheme.bodyMedium,
+                    AppLocalizations.of(context)!.createAccount,
+                    style: Theme.of(context).textTheme.bodySmall,
                   ),
-                  SizedBox(height: 10),
-                  DefaultEmailTextFormField(
-                      labelText: AppLocalizations.of(context)!.email,
-                      controller: emailController,
-                      prefixIcon: Icons.alternate_email,
-                      suffixIcon: Icons.email),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    AppLocalizations.of(context)!.password,
-                    style: Theme.of(context).textTheme.bodyMedium,
-                  ),
-                  SizedBox(height: 10),
-                  DefaultPasswordTextFormField(
-                    labelText: AppLocalizations.of(context)!.password,
-                    secured: secured,
-                    prefixIcon: Icons.password,
-                    suffixIcon:
-                        secured ? CupertinoIcons.eye : CupertinoIcons.eye_slash,
-                    controller: passwordController,
-                    onSecuredClicked: () {
-                      setState(() {
-                        secured = !secured;
-                      });
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, SignUpScreen.routeName);
                     },
-                  ),
-                  SizedBox(height: 20),
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Theme.of(context).primaryColor,
-                      padding: EdgeInsets.symmetric(vertical: 15),
-                    ),
-                    onPressed: () {},
                     child: Text(
-                      AppLocalizations.of(context)!.login,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .copyWith(color: Colors.white),
+                      AppLocalizations.of(context)!.signup,
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                          color: Colors.blueAccent,
+                          decoration: TextDecoration.underline,
+                          decorationColor: Colors.blueAccent,
+                          decorationThickness: 4),
                     ),
                   ),
                 ],
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  AppLocalizations.of(context)!.createAccount,
-                  style: Theme.of(context).textTheme.bodySmall,
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(context, SignUpScreen.routeName);
-                  },
-                  child: Text(
-                    AppLocalizations.of(context)!.signup,
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: Colors.blueAccent,
-                        decoration: TextDecoration.underline,
-                        decorationColor: Colors.blueAccent,
-                        decorationThickness: 4),
-                  ),
-                ),
-              ],
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -30,5 +30,7 @@
   "editTask": "Edit Task",
   "wrongMessage": "Something Went Wrong",
   "tryAgain": "Try Again",
+  "wrongEmail": "يرجى إدخال بريد إلكتروني صحيح",
+  "wrongPassword": "يرجى إدخال كلمة سر صحيحة",
   "fieldRequired": "Field Required"
 }

@@ -28,5 +28,7 @@
   "editTask": "Edit Task",
   "wrongMessage": "Something Went Wrong",
   "tryAgain": "Try Again",
+  "wrongEmail": "Please Enter a Valid Email",
+  "wrongPassword": "Please Enter a Valid Password",
   "fieldRequired": "Field Required"
 }

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class DefaultPasswordTextFormField extends StatelessWidget {
   String labelText;
@@ -19,6 +21,16 @@ class DefaultPasswordTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      validator: (value) {
+        bool passwordValid = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$').hasMatch(value!);
+
+      if (value.isEmpty){
+        return AppLocalizations.of(context)!.fieldRequired;
+      } else if (!passwordValid){
+        return AppLocalizations.of(context)!.wrongPassword;
+      }
+
+      },
       textInputAction: TextInputAction.next,
         obscureText: secured,
         controller: controller,
