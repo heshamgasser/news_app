@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:app_template/models/ArticleResponse.dart';
 import 'package:app_template/models/SourcesResponse.dart';
+import 'package:app_template/models/news_searching_model.dart';
 import 'package:http/http.dart' as http;
 import '../../components/constant.dart';
 
@@ -28,12 +29,26 @@ class ApiManager {
       NEWS_ENDPOINT,
       {
         'apiKey': APIKEY,
-        'sources': sourceId
+        'sources': sourceId,
       },
     );
     http.Response response = await http.get(url);
     var newsJson = jsonDecode(response.body);
     ArticleResponse article = ArticleResponse.fromJson(newsJson);
     return article;
+  }
+  
+  
+  static Future<NewsSearchingResponse> searchNews (String sourceId, String query) async{
+    Uri url = Uri.https(BASEURL, NEWS_ENDPOINT, {
+      "apiKey" : APIKEY,
+      "sources": sourceId,
+      "q": query
+    },);
+   http.Response response = await http.get(url);
+  var jsonResponse = jsonDecode(response.body);
+  NewsSearchingResponse newsResponse = NewsSearchingResponse.fromJson(jsonResponse);
+  return newsResponse;
+
   }
 }

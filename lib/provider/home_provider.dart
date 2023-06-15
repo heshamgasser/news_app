@@ -19,7 +19,14 @@ class HomeProvider extends ChangeNotifier {
 
     }
     notifyListeners();
+  }
 
+
+  bool searchSelected = false;
+
+  void onSearchSelected (){
+    searchSelected = !searchSelected;
+    notifyListeners();
   }
 
 }
