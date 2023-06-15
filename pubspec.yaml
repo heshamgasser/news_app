@@ -45,6 +45,8 @@ dependencies:
   awesome_dialog: ^2.2.1
   cached_network_image: ^3.2.3
   anim_search_bar: ^2.0.3
+  cloud_firestore: ^4.8.1
+  firebase_core: ^2.14.0
 
 dev_dependencies:
   flutter_test:
