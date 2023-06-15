@@ -3,12 +3,20 @@ import 'package:app_template/screens/category_screen.dart';
 import 'package:app_template/screens/news_screen.dart';
 import 'package:app_template/screens/widget/drawer_widget/drawer_widget.dart';
 import 'package:app_template/screens/widget/search_widget/search_widget.dart';
+import 'package:app_template/shared/network/remote/api_manager.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static const String routeName = 'Home Screen';
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +39,15 @@ class HomeScreen extends StatelessWidget {
             ),
             centerTitle: true,
             title: provider.searchSelected
-                ? SearchWidget((){
-                  provider.onSearchSelected();
-            },)
+                ? SearchWidget(
+                    onsearchedClosed: () {
+                      provider.onSearchSelected();
+                    },
+                    controller: searchController,
+                    onsearchedClicked: () {
+                      ApiManager.searchNews("", searchController.text);
+                    },
+                  )
                 : Text(
                     provider.categoryModel == null
                         ? AppLocalizations.of(context)!.newsApp

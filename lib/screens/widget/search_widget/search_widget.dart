@@ -1,18 +1,20 @@
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../../provider/home_provider.dart';
 
 class SearchWidget extends StatelessWidget {
   Function onsearchedClosed;
+  Function onsearchedClicked;
+  TextEditingController controller;
 
-
-  SearchWidget(this.onsearchedClosed);
+  SearchWidget(
+      {required this.onsearchedClosed,
+      required this.controller,
+      required this.onsearchedClicked});
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,
@@ -30,12 +32,15 @@ class SearchWidget extends StatelessWidget {
           prefixIcon: IconButton(
             onPressed: () {
               onsearchedClosed();
+              controller.clear();
             },
             icon: Icon(Icons.close),
           ),
           prefixIconColor: Theme.of(context).primaryColor,
           suffixIcon: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              onsearchedClicked();
+            },
             icon: Icon(Icons.search),
           ),
           suffixIconColor: Theme.of(context).primaryColor),

@@ -1,7 +1,5 @@
 import 'package:app_template/home_layout/home_layout.dart';
 import 'package:app_template/provider/app_provider.dart';
-import 'package:app_template/screens/category_screen.dart';
-import 'package:app_template/screens/news_screen.dart';
 import 'package:app_template/screens/setting_screen.dart';
 import 'package:app_template/shared/style/myThemeData.dart';
 import 'package:flutter/material.dart';
@@ -21,6 +19,7 @@ class NewsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appProvider = Provider.of<AppProvider>(context);
+    appProvider.getSharedPreferences();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: MyThemeData.lightTheme,
