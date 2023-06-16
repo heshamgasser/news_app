@@ -1,8 +1,6 @@
 import 'dart:convert';
-
 import 'package:app_template/models/ArticleResponse.dart';
 import 'package:app_template/models/SourcesResponse.dart';
-import 'package:app_template/models/news_searching_model.dart';
 import 'package:http/http.dart' as http;
 
 import '../../components/constant.dart';
@@ -40,17 +38,5 @@ class ApiManager {
   }
 
 
-  // static Future<NewsSearchingResponse> searchNews(
-  //     String? sourceId, String query) async {
-  //   Uri url = Uri.https(
-  //     BASEURL,
-  //     NEWS_ENDPOINT,
-  //     {"apiKey": APIKEY, "sources": sourceId, "q": query},
-  //   );
-  //   http.Response response = await http.get(url);
-  //   var jsonResponse = jsonDecode(response.body);
-  //   NewsSearchingResponse newsResponse =
-  //       NewsSearchingResponse.fromJson(jsonResponse);
-  //   return newsResponse;
-  // }
+
 }
