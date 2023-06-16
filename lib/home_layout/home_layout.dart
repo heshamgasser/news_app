@@ -44,9 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       provider.onSearchSelected();
                     },
                     controller: searchController,
-                    onsearchedClicked: () {
-                      ApiManager.searchNews("", searchController.text);
-                    },
+                    onsearchedClicked: () {},
                   )
                 : Text(
                     provider.categoryModel == null

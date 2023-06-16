@@ -40,17 +40,17 @@ class ApiManager {
   }
 
 
-  static Future<NewsSearchingResponse> searchNews(
-      String? sourceId, String query) async {
-    Uri url = Uri.https(
-      BASEURL,
-      NEWS_ENDPOINT,
-      {"apiKey": APIKEY, "sources": sourceId ?? "", "q": query},
-    );
-    http.Response response = await http.get(url);
-    var jsonResponse = jsonDecode(response.body);
-    NewsSearchingResponse newsResponse =
-        NewsSearchingResponse.fromJson(jsonResponse);
-    return newsResponse;
-  }
+  // static Future<NewsSearchingResponse> searchNews(
+  //     String? sourceId, String query) async {
+  //   Uri url = Uri.https(
+  //     BASEURL,
+  //     NEWS_ENDPOINT,
+  //     {"apiKey": APIKEY, "sources": sourceId, "q": query},
+  //   );
+  //   http.Response response = await http.get(url);
+  //   var jsonResponse = jsonDecode(response.body);
+  //   NewsSearchingResponse newsResponse =
+  //       NewsSearchingResponse.fromJson(jsonResponse);
+  //   return newsResponse;
+  // }
 }
