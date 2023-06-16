@@ -1,10 +1,24 @@
+import 'package:app_template/models/firebase_models/user_model.dart';
+import 'package:app_template/shared/components/constant.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class FirebaseEquation {
 
-  void userLogin (String email, String password) async{
+  static CollectionReference<UserModel> usersCollection() {
+   return FirebaseFirestore.instance.collection(UserModel.COLLECTION_NAME)
+        .withConverter(fromFirestore: (snapshot, options) =>
+        UserModel.fromJson(snapshot.data()!),
+      toFirestore: (value, options) => value.toJson(),);
+
+  }
+
+
+  void userLogin(String email, String password) async {
     try {
-      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      final credential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
