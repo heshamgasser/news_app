@@ -1,4 +1,5 @@
 import 'package:app_template/screens/widget/article_modal_sheet/article_modal_sheet.dart';
+import 'package:app_template/screens/widget/news_item_widget/news_item_widget.dart';
 import 'package:app_template/screens/widget/source_item_widget/source_item_widget.dart';
 import 'package:app_template/shared/network/remote/api_manager.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -101,42 +102,7 @@ class _TabsScreenState extends State<TabsScreen> {
                           },
                         );
                       },
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(20),
-                              ),
-                              child: CachedNetworkImage(
-                                imageUrl: newsData[index].urlToImage ?? '',
-                                placeholder: (context, url) =>
-                                    Center(child: CircularProgressIndicator()),
-                                errorWidget: (context, url, error) =>
-                                    Icon(Icons.error),
-                              ),
-                            ),
-                            Text(
-                              newsData[index].source?.name ?? '',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodySmall!
-                                  .copyWith(color: Colors.grey),
-                            ),
-                            Text(newsData[index].title ?? ''),
-                            Text(
-                                newsData[index].publishedAt?.substring(0, 10) ??
-                                    '',
-                                textAlign: TextAlign.end,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall!
-                                    .copyWith(color: Colors.grey))
-                          ],
-                        ),
-                      ),
+                      child: NewsItem(newsData[index]),
                     );
                   },
                   separatorBuilder: (context, index) => SizedBox(height: 5),

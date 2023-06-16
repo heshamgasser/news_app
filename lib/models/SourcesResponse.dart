@@ -59,7 +59,6 @@ class Sources {
 
   Sources.fromJson(dynamic json) {
     id = json['id'];
-
     name = json['name'];
     description = json['description'];
     url = json['url'];
@@ -69,7 +68,6 @@ class Sources {
   }
 
   String? id;
-
   String? name;
   String? description;
   String? url;
@@ -81,7 +79,6 @@ class Sources {
     final map = <String, dynamic>{};
 
     map['id'] = id;
-
     map['name'] = name;
     map['description'] = description;
     map['url'] = url;
