@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../shared/network/remote/api_manager.dart';
 
 class NewsScreen extends StatelessWidget {
-  static const String routeName = 'News Screen';
+
  CategoryModel categoryModel;
 
  NewsScreen(this.categoryModel);
@@ -37,17 +37,20 @@ class NewsScreen extends StatelessWidget {
         }
 
         if (snapshot.data?.status != 'ok') {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Text('Something Went Wrong'),
-              SizedBox(height: 10),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text('Try Again'),
-              ),
-            ],
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text('Something Went Wrong'),
+                SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text('Try Again'),
+                ),
+              ],
+            ),
           );
         }
 

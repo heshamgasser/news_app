@@ -44,7 +44,7 @@ class NewsApp extends StatelessWidget {
         Locale('ar'), // Arabic
       ],
       locale: Locale(appProvider.language),
-      initialRoute: LoginScreen.routeName,
+      initialRoute: HomeScreen.routeName,
       routes: {
         HomeScreen.routeName: (context) => HomeScreen(),
         SettingScreen.routeName:(context) => SettingScreen(),
