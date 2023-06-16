@@ -52,10 +52,8 @@ class NewsScreen extends StatelessWidget {
         }
 
         var sources = snapshot.data?.sources ?? [];
-        return TabsScreen(sources!);
+        return TabsScreen(sources);
 
-
-        // TabsScreen(sources!);
       },
     );
   }
