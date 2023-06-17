@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
+import '../models/category_item_model.dart';
+
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'Home Screen';
 
@@ -15,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  TextEditingController searchController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -37,34 +39,13 @@ class _HomeScreenState extends State<HomeScreen> {
               borderSide: BorderSide(color: Colors.transparent),
             ),
             centerTitle: true,
-            title: provider.searchSelected
-                ? SearchWidget(
-                    onsearchedClosed: () {
-                      provider.onSearchSelected();
-                    },
-                    controller: searchController,
-                    onsearchedClicked: () {},
-                  )
-                : Text(
+            title:
+            Text(
                     provider.categoryModel == null
                         ? AppLocalizations.of(context)!.newsApp
                         : provider.categoryModel!.name,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
-            actions: [
-              Visibility(
-                visible: !provider.searchSelected,
-                child: IconButton(
-                  onPressed: () {
-                    provider.onSearchSelected();
-                  },
-                  icon: Icon(
-                    Icons.search,
-                    size: 30,
-                  ),
-                ),
-              ),
-            ],
           ),
           body: provider.categoryModel == null
               ? CategoryScreen(provider.onCategorySelected)
@@ -73,4 +54,4 @@ class _HomeScreenState extends State<HomeScreen> {
       },
     );
   }
-}
+  }

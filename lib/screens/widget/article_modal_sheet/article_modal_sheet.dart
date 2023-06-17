@@ -1,7 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
-import '../../../models/ArticleResponse.dart';
+import '../../../models/NewsResponse.dart';
 
 class ArticleModalSheet extends StatelessWidget {
   Articles articles;

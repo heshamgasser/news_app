@@ -3,9 +3,9 @@
 
 class SourcesResponse {
   SourcesResponse({
-    this.status,
     this.code,
     this.message,
+    this.status,
     this.sources,
   });
 
@@ -25,17 +25,6 @@ class SourcesResponse {
   String? code;
   String? message;
   List<Sources>? sources;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['status'] = status;
-    map['code'] = code;
-    map['message'] = message;
-    if (sources != null) {
-      map['sources'] = sources?.map((v) => v.toJson()).toList();
-    }
-    return map;
-  }
 }
 
 /// id : "abc-news"
@@ -74,17 +63,4 @@ class Sources {
   String? category;
   String? language;
   String? country;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-
-    map['id'] = id;
-    map['name'] = name;
-    map['description'] = description;
-    map['url'] = url;
-    map['category'] = category;
-    map['language'] = language;
-    map['country'] = country;
-    return map;
-  }
 }

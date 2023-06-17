@@ -1,8 +1,7 @@
 import 'dart:convert';
-import 'package:app_template/models/ArticleResponse.dart';
+import 'package:app_template/models/NewsResponse.dart';
 import 'package:app_template/models/SourcesResponse.dart';
 import 'package:http/http.dart' as http;
-
 import '../../components/constant.dart';
 
 class ApiManager {
@@ -22,7 +21,7 @@ class ApiManager {
     return source;
   }
 
-   static Future<ArticleResponse> getNews(String sourceId) async {
+   static Future<NewsResponse> getNews(String sourceId) async {
     Uri url = Uri.https(
       BASEURL,
       NEWS_ENDPOINT,
@@ -33,7 +32,7 @@ class ApiManager {
     );
     http.Response response = await http.get(url);
     var newsJson = jsonDecode(response.body);
-    ArticleResponse article = ArticleResponse.fromJson(newsJson);
+    NewsResponse article = NewsResponse.fromJson(newsJson);
     return article;
   }
 

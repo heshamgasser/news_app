@@ -1,8 +1,6 @@
-import 'package:app_template/screens/widget/article_modal_sheet/article_modal_sheet.dart';
 import 'package:app_template/screens/widget/news_item_widget/news_item_widget.dart';
 import 'package:app_template/screens/widget/source_item_widget/source_item_widget.dart';
 import 'package:app_template/shared/network/remote/api_manager.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../models/SourcesResponse.dart';
@@ -39,16 +37,14 @@ class _TabsScreenState extends State<TabsScreen> {
                 return Tab(
                   child: SourceItemWidget(
                       e,
-                      widget.sources.indexOf(e) == selectedIndex
-                          ? true
-                          : false),
+                      widget.sources.indexOf(e) == selectedIndex),
                 );
               },
             ).toList(),
           ),
         ),
         FutureBuilder(
-          future: ApiManager.getNews(widget.sources[selectedIndex].id ?? ''),
+          future: ApiManager.getNews(widget.sources[selectedIndex].id ?? ""),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());
@@ -77,7 +73,7 @@ class _TabsScreenState extends State<TabsScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  Text('Something Went Wrong'),
+                  Text(snapshot.data?.message ?? ""),
                   SizedBox(height: 10),
                   ElevatedButton(
                     onPressed: () {},
@@ -91,19 +87,7 @@ class _TabsScreenState extends State<TabsScreen> {
             return Expanded(
               child: ListView.separated(
                   itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: () {
-                        showModalBottomSheet(
-                          context: context,
-                          builder: (context) {
-                            return ArticleModalSheet(
-                              newsData[index],
-                            );
-                          },
-                        );
-                      },
-                      child: NewsItem(newsData[index]),
-                    );
+                    return NewsItem(newsData[index]);
                   },
                   separatorBuilder: (context, index) => SizedBox(height: 5),
                   itemCount: newsData.length),
