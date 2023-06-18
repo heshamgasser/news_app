@@ -1,6 +1,4 @@
 import 'dart:convert';
-
-
 import 'package:http/http.dart' as http;
 import '../../../models/NewsResponse.dart';
 import '../../../models/SourcesResponse.dart';
@@ -18,9 +16,9 @@ class ApiManager {
     http.Response response = await http.get(url);
     var jsonResponse = jsonDecode(response.body);
 
-    SourcesResponse source = SourcesResponse.fromJson(jsonResponse);
+    SourcesResponse sourcesResponse = SourcesResponse.fromJson(jsonResponse);
 
-    return source;
+    return sourcesResponse;
   }
 
    static Future<NewsResponse> getNews(String sourceId) async {
@@ -34,8 +32,8 @@ class ApiManager {
     );
     http.Response response = await http.get(url);
     var newsJson = jsonDecode(response.body);
-    NewsResponse article = NewsResponse.fromJson(newsJson);
-    return article;
+    NewsResponse newsResponse = NewsResponse.fromJson(newsJson);
+    return newsResponse;
   }
 
 

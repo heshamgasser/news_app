@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_app/screens/widget/news_item_widget/news_item_widget.dart';
 import 'package:news_app/screens/widget/source_item_widget/source_item_widget.dart';
-
 import '../models/SourcesResponse.dart';
 import '../shared/network/remote/api_manager.dart';
 

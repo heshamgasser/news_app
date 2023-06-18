@@ -8,15 +8,15 @@ import 'package:news_app/screens/setting_screen.dart';
 import 'package:news_app/screens/signUp_screen.dart';
 import 'package:news_app/shared/style/myThemeData.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
+// import 'package:firebase_core/firebase_core.dart';
+// import 'firebase_options.dart';
 import 'home_layout/home_layout.dart';
 
 void main() async{
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp(
+  //   options: DefaultFirebaseOptions.currentPlatform,
+  // );
   runApp(ChangeNotifierProvider(
       create: (context) => AppProvider(),
       child: NewsApp()));

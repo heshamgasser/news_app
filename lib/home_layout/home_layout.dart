@@ -2,8 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
-
-import '../models/category_item_model.dart';
 import '../provider/home_provider.dart';
 import '../screens/category_screen.dart';
 import '../screens/news_screen.dart';
