@@ -1,13 +1,13 @@
-import 'package:app_template/provider/home_provider.dart';
-import 'package:app_template/screens/category_screen.dart';
-import 'package:app_template/screens/news_screen.dart';
-import 'package:app_template/screens/widget/drawer_widget/drawer_widget.dart';
-import 'package:app_template/screens/widget/search_widget/search_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 import '../models/category_item_model.dart';
+import '../provider/home_provider.dart';
+import '../screens/category_screen.dart';
+import '../screens/news_screen.dart';
+import '../screens/widget/drawer_widget/drawer_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = 'Home Screen';

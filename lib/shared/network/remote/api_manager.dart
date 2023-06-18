@@ -1,7 +1,9 @@
 import 'dart:convert';
-import 'package:app_template/models/NewsResponse.dart';
-import 'package:app_template/models/SourcesResponse.dart';
+
+
 import 'package:http/http.dart' as http;
+import '../../../models/NewsResponse.dart';
+import '../../../models/SourcesResponse.dart';
 import '../../components/constant.dart';
 
 class ApiManager {

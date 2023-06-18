@@ -1,15 +1,16 @@
-import 'package:app_template/home_layout/home_layout.dart';
-import 'package:app_template/provider/app_provider.dart';
-import 'package:app_template/screens/login_screen.dart';
-import 'package:app_template/screens/setting_screen.dart';
-import 'package:app_template/screens/signUp_screen.dart';
-import 'package:app_template/shared/style/myThemeData.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:news_app/provider/app_provider.dart';
+import 'package:news_app/screens/login_screen.dart';
+import 'package:news_app/screens/setting_screen.dart';
+import 'package:news_app/screens/signUp_screen.dart';
+import 'package:news_app/shared/style/myThemeData.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'home_layout/home_layout.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

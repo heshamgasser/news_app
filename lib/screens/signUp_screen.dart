@@ -1,10 +1,12 @@
-import 'package:app_template/screens/login_screen.dart';
-import 'package:app_template/screens/widget/login_signup_screen_widget/email_screen_widget.dart';
-import 'package:app_template/screens/widget/login_signup_screen_widget/name_screen_widget.dart';
-import 'package:app_template/screens/widget/login_signup_screen_widget/password_screen_widget.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:news_app/screens/widget/login_signup_screen_widget/email_screen_widget.dart';
+import 'package:news_app/screens/widget/login_signup_screen_widget/name_screen_widget.dart';
+import 'package:news_app/screens/widget/login_signup_screen_widget/password_screen_widget.dart';
+
+import 'login_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   static const String routeName = 'Sign Up Screen';

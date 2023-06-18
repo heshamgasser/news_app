@@ -1,5 +1,6 @@
-import 'package:app_template/screens/widget/setting_screen_widget/theme_item_dialog.dart';
+
 import 'package:flutter/material.dart';
+import 'package:news_app/screens/widget/setting_screen_widget/theme_item_dialog.dart';
 
 class ThemeItemWidget extends StatelessWidget {
   String text;

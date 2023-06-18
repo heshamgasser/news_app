@@ -1,9 +1,10 @@
-import 'package:app_template/screens/widget/news_item_widget/news_item_widget.dart';
-import 'package:app_template/screens/widget/source_item_widget/source_item_widget.dart';
-import 'package:app_template/shared/network/remote/api_manager.dart';
+
 import 'package:flutter/material.dart';
+import 'package:news_app/screens/widget/news_item_widget/news_item_widget.dart';
+import 'package:news_app/screens/widget/source_item_widget/source_item_widget.dart';
 
 import '../models/SourcesResponse.dart';
+import '../shared/network/remote/api_manager.dart';
 
 class TabsScreen extends StatefulWidget {
   List<Sources> sources;

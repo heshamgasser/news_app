@@ -1,9 +1,11 @@
-import 'package:app_template/provider/app_provider.dart';
-import 'package:app_template/screens/widget/setting_screen_widget/language_item_widget.dart';
-import 'package:app_template/screens/widget/setting_screen_widget/theme_item_widget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:news_app/screens/widget/setting_screen_widget/language_item_widget.dart';
+import 'package:news_app/screens/widget/setting_screen_widget/theme_item_widget.dart';
 import 'package:provider/provider.dart';
+
+import '../provider/app_provider.dart';
 
 class SettingScreen extends StatelessWidget {
   static const String routeName = 'Setting Screen';

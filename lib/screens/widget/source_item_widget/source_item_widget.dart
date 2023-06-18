@@ -1,5 +1,7 @@
-import 'package:app_template/models/SourcesResponse.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../../models/SourcesResponse.dart';
 
 class SourceItemWidget extends StatelessWidget {
   Sources source;

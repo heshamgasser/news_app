@@ -1,7 +1,9 @@
-import 'package:app_template/models/category_item_model.dart';
-import 'package:app_template/screens/widget/category_screen_widget/categoryItemWidget.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:news_app/screens/widget/category_screen_widget/categoryItemWidget.dart';
+
+import '../models/category_item_model.dart';
 
 class CategoryScreen extends StatelessWidget {
   static const String routeName = 'Category Screen';

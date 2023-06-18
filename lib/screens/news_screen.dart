@@ -1,6 +1,7 @@
-import 'package:app_template/models/category_item_model.dart';
-import 'package:app_template/screens/tabs_screen.dart';
+
 import 'package:flutter/material.dart';
+import 'package:news_app/screens/tabs_screen.dart';
+import '../models/category_item_model.dart';
 import '../shared/network/remote/api_manager.dart';
 
 class NewsScreen extends StatelessWidget {

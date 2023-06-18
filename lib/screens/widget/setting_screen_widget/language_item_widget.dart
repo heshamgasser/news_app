@@ -1,5 +1,7 @@
-import 'package:app_template/screens/widget/setting_screen_widget/language_item_dialog.dart';
+
 import 'package:flutter/material.dart';
+
+import 'language_item_dialog.dart';
 
 class LanguageItemWidget extends StatelessWidget {
   String text;

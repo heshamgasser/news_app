@@ -1,5 +1,7 @@
-import 'package:app_template/shared/style/app_colors.dart';
+
 import 'package:flutter/material.dart';
+
+import '../shared/style/app_colors.dart';
 
 
 class CategoryModel {
