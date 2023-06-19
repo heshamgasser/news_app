@@ -1,6 +1,9 @@
 
+
 import 'package:flutter/material.dart';
+import 'package:news_app/models/SourcesResponse.dart';
 import 'package:news_app/screens/tabs_screen.dart';
+
 import '../models/category_item_model.dart';
 import '../shared/network/remote/api_manager.dart';
 
@@ -12,7 +15,8 @@ class NewsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
+
+    return FutureBuilder<SourcesResponse>(
       future: ApiManager.getSources(categoryModel.id),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
@@ -55,8 +59,8 @@ class NewsScreen extends StatelessWidget {
           );
         }
 
-        var sources = snapshot.data?.sources ?? [];
-        return TabsScreen(sources);
+        var newsSources = snapshot.data?.sources ?? [];
+        return TabsScreen(newsSources);
 
       },
     );

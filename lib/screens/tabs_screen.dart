@@ -1,50 +1,43 @@
-
 import 'package:flutter/material.dart';
+import 'package:news_app/provider/home_provider.dart';
 import 'package:news_app/screens/widget/news_item_widget/news_item_widget.dart';
 import 'package:news_app/screens/widget/source_item_widget/source_item_widget.dart';
+import 'package:provider/provider.dart';
+
 import '../models/SourcesResponse.dart';
 import '../shared/network/remote/api_manager.dart';
 
-class TabsScreen extends StatefulWidget {
+class TabsScreen extends StatelessWidget {
   List<Sources> sources;
 
   TabsScreen(this.sources);
 
   @override
-  State<TabsScreen> createState() => _TabsScreenState();
-}
-
-class _TabsScreenState extends State<TabsScreen> {
-  int selectedIndex = 0;
-
-  @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<HomeProvider>(context);
     return Column(
       children: [
         DefaultTabController(
-          length: widget.sources.length,
+          length: sources.length,
           child: TabBar(
             isScrollable: true,
             dividerColor: Colors.transparent,
             indicatorColor: Colors.transparent,
             onTap: (value) {
-              setState(() {
-                selectedIndex = value;
-              });
+              provider.changeSelectedIndex(value);
             },
-            tabs: widget.sources.map(
-                  (e) {
+            tabs: sources.map(
+              (e) {
                 return Tab(
-                  child: SourceItemWidget(
-                      e,
-                      widget.sources.indexOf(e) == selectedIndex),
+                  child:
+                      SourceItemWidget(e, sources.indexOf(e) == provider.selectedIndex),
                 );
               },
             ).toList(),
           ),
         ),
         FutureBuilder(
-          future: ApiManager.getNews(widget.sources[selectedIndex].id ?? ""),
+          future: ApiManager.getNews(sources[provider.selectedIndex].id ?? ""),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(child: CircularProgressIndicator());

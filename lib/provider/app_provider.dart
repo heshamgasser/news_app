@@ -5,6 +5,7 @@ class AppProvider extends ChangeNotifier {
   ThemeMode themeMode = ThemeMode.light;
 
   void changeTheme(ThemeMode mode) async {
+    if (mode == themeMode) return;
     themeMode = mode;
     notifyListeners();
     final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -14,6 +15,7 @@ class AppProvider extends ChangeNotifier {
   String language = 'en';
 
   void changeLanguage(String lang) async {
+    if (lang == language) return;
     language = lang;
     notifyListeners();
     final SharedPreferences prefs = await SharedPreferences.getInstance();

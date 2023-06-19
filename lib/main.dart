@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -8,26 +7,27 @@ import 'package:news_app/screens/setting_screen.dart';
 import 'package:news_app/screens/signUp_screen.dart';
 import 'package:news_app/shared/style/myThemeData.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 // import 'package:firebase_core/firebase_core.dart';
 // import 'firebase_options.dart';
 import 'home_layout/home_layout.dart';
 
-void main() async{
+void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp(
   //   options: DefaultFirebaseOptions.currentPlatform,
   // );
   runApp(ChangeNotifierProvider(
-      create: (context) => AppProvider(),
-      child: NewsApp()));
+      create: (context) => AppProvider(), child: NewsApp()));
 }
 
 class NewsApp extends StatelessWidget {
-  const NewsApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var appProvider = Provider.of<AppProvider>(context);
+
     appProvider.getSharedPreferences();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -48,12 +48,13 @@ class NewsApp extends StatelessWidget {
       initialRoute: HomeScreen.routeName,
       routes: {
         HomeScreen.routeName: (context) => HomeScreen(),
-        SettingScreen.routeName:(context) => SettingScreen(),
-        LoginScreen.routeName:(context) => LoginScreen(),
-        SignUpScreen.routeName:(context) => SignUpScreen(),
-
-
+        SettingScreen.routeName: (context) => SettingScreen(),
+        LoginScreen.routeName: (context) => LoginScreen(),
+        SignUpScreen.routeName: (context) => SignUpScreen(),
       },
     );
   }
+
+
+
 }
