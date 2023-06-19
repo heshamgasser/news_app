@@ -6,8 +6,14 @@ class HomeProvider extends ChangeNotifier {
 
   CategoryModel? categoryModel = null;
 
-
   int selectedIndex = 0;
+
+  bool searchSelected = false;
+
+  void onSearchedSelected (){
+    searchSelected = !searchSelected;
+    notifyListeners();
+  }
 
   void changeSelectedIndex (int index){
     selectedIndex = index;
@@ -23,6 +29,7 @@ class HomeProvider extends ChangeNotifier {
   void onDrawerClicked (int number){
     if (number == DrawerWidget.CATEGORY){
       categoryModel = null;
+      selectedIndex = 0;
     }
     notifyListeners();
   }

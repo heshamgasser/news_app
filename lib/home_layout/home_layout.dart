@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:news_app/screens/widget/search_widget/search_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/home_provider.dart';
@@ -10,6 +11,7 @@ import '../screens/widget/drawer_widget/drawer_widget.dart';
 class HomeScreen extends StatelessWidget {
   static const String routeName = 'Home Screen';
 
+  TextEditingController searchController = TextEditingController();
 
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -30,12 +32,34 @@ class HomeScreen extends StatelessWidget {
               borderSide: BorderSide(color: Colors.transparent),
             ),
             centerTitle: true,
-            title: Text(
-              provider.categoryModel == null
-                  ? AppLocalizations.of(context)!.newsApp
-                  : provider.categoryModel!.name,
-              style: Theme.of(context).textTheme.titleLarge,
-            ),
+            title: provider.searchSelected
+                ? SearchWidget(
+                    onsearchedClosed: () {
+                      provider.onSearchedSelected();
+                    },
+                    controller: searchController,
+                    onsearchedClicked: () {},
+                  )
+                : Text(
+                    provider.categoryModel == null
+                        ? AppLocalizations.of(context)!.newsApp
+                        : provider.categoryModel!.name,
+                    style: Theme.of(context).textTheme.titleLarge,
+                  ),
+            actions: [
+              Visibility(
+                visible: !provider.searchSelected,
+                child: IconButton(
+                  onPressed: () {
+                    provider.onSearchedSelected();
+                  },
+                  icon: Icon(
+                    Icons.search,
+                    size: 30,
+                  ),
+                ),
+              ),
+            ],
           ),
           body: provider.categoryModel == null
               ? CategoryScreen(provider.onCategorySelected)

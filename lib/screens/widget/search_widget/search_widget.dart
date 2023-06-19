@@ -32,7 +32,7 @@ class SearchWidget extends StatelessWidget {
           prefixIcon: IconButton(
             onPressed: () {
               onsearchedClosed();
-             // controller.text = '';
+             controller.text = '';
             },
             icon: Icon(Icons.close),
           ),
